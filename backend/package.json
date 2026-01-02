@@ -1,0 +1,34 @@
+{
+    "name": "@opensupport/backend",
+    "version": "1.0.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "node --watch src/server.js",
+        "start": "node src/server.js",
+        "test": "node --test src/**/*.test.js",
+        "test:integration": "node --test src/tests/*.integration.js"
+    },
+    "dependencies": {
+        "@sentry/node": "^7.91.0",
+        "@socket.io/redis-adapter": "^8.2.1",
+        "@supabase/supabase-js": "^2.39.0",
+        "cors": "^2.8.5",
+        "express": "^4.18.2",
+        "express-rate-limit": "^7.1.5",
+        "helmet": "^7.1.0",
+        "redis": "^4.6.12",
+        "resend": "^2.1.0",
+        "socket.io": "^4.7.4",
+        "socket.io-client": "^4.7.4",
+        "stripe": "^14.12.0",
+        "uuid": "^9.0.1",
+        "zod": "^3.22.4"
+    },
+    "devDependencies": {
+        "@types/node": "^20.10.0"
+    },
+    "engines": {
+        "node": ">=20.0.0"
+    }
+}

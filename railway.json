@@ -1,0 +1,69 @@
+{
+    "name": "opensupport-backend",
+    "version": "1.0.0",
+    "region": "us-west",
+    "services": [
+        {
+            "type": "web",
+            "name": "opensupport-api",
+            "runtime": "node",
+            "repo": "",
+            "buildCommand": "cd backend && npm install",
+            "startCommand": "cd backend && npm start",
+            "envVars": [
+                {
+                    "key": "NODE_ENV",
+                    "value": "production"
+                },
+                {
+                    "key": "PORT",
+                    "value": "3001"
+                },
+                {
+                    "key": "SUPABASE_URL",
+                    "sync": false
+                },
+                {
+                    "key": "SUPABASE_ANON_KEY",
+                    "sync": false
+                },
+                {
+                    "key": "SUPABASE_SERVICE_KEY",
+                    "sync": false
+                },
+                {
+                    "key": "REDIS_URL",
+                    "sync": false
+                },
+                {
+                    "key": "STRIPE_SECRET_KEY",
+                    "sync": false
+                },
+                {
+                    "key": "STRIPE_WEBHOOK_SECRET",
+                    "sync": false
+                },
+                {
+                    "key": "STRIPE_PRICE_ID_MONTHLY",
+                    "sync": false
+                },
+                {
+                    "key": "RESEND_API_KEY",
+                    "sync": false
+                },
+                {
+                    "key": "EMAIL_FROM",
+                    "sync": false
+                },
+                {
+                    "key": "FRONTEND_URL",
+                    "sync": false
+                },
+                {
+                    "key": "WIDGET_URL",
+                    "sync": false
+                }
+            ]
+        }
+    ]
+}
