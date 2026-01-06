@@ -13,9 +13,31 @@ export async function initRedis() {
     }
 
     try {
-        redisClient = createClient({ url: REDIS_URL });
+        const clientConfig = {
+            url: REDIS_URL,
+            socket: {
+                reconnectStrategy: (retries) => {
+                    if (retries > 10) {
+                        console.error('[Redis] Max retries reached, giving up');
+                        return false;
+                    }
+                    return Math.min(retries * 100, 3000);
+                }
+            }
+        };
+
+        redisClient = createClient(clientConfig);
         pubClient = redisClient.duplicate();
         subClient = redisClient.duplicate();
+
+        // Add error handlers to prevent crash
+        const handleError = (name) => (err) => {
+            console.error(`[Redis] ${name} error:`, err.message);
+        };
+
+        redisClient.on('error', handleError('client'));
+        pubClient.on('error', handleError('pub'));
+        subClient.on('error', handleError('sub'));
 
         await Promise.all([
             redisClient.connect(),
